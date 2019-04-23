@@ -10,7 +10,7 @@ Router             = require './router'
 
 class Server
   constructor: (options)->
-    {@disableLogging, @port, @mongoDbUri} = options
+    {@disableLogging, @port, @mongoDbUri, @mongoDbOptions} = options
     {@meshbluConfig} = options
 
   address: =>
@@ -28,7 +28,7 @@ class Server
 
     app.options '*', cors()
 
-    router = new Router {@mongoDbUri}
+    router = new Router {@mongoDbUri, @mongoDbOptions}
     router.route app
 
     @server = app.listen @port, callback
