@@ -1,8 +1,8 @@
 AliasController = require './controllers/alias-controller'
 
 class Router
-  constructor: ({mongoDbUri}) ->
-    @aliasController = new AliasController {mongoDbUri}
+  constructor: ({mongoDbUri, mongoDbOptions}) ->
+    @aliasController = new AliasController {mongoDbUri, mongoDbOptions}
 
   route: (app) =>
     app.post '/aliases', @aliasController.create

@@ -3,9 +3,9 @@ AliasService = require '../services/alias-service'
 SubAliasService = require '../services/sub-alias-service'
 
 class AliasController
-  constructor: ({mongoDbUri}) ->
-    @aliasService = new AliasService {mongoDbUri}
-    @subAliasService = new SubAliasService {mongoDbUri}
+  constructor: ({mongoDbUri, mongoDbOptions}) ->
+    @aliasService = new AliasService {mongoDbUri, mongoDbOptions}
+    @subAliasService = new SubAliasService {mongoDbUri, mongoDbOptions}
 
   find: (req, res) =>
     {name} = req.params

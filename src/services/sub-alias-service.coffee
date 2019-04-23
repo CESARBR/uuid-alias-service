@@ -5,9 +5,9 @@ http = require 'http'
 UUID_REGEX = /[0-9a-f]{8}-([0-9a-f]{4}-){3}[0-9a-f]{12}/i
 
 class SubAliasService
-  constructor: ({mongoDbUri}) ->
+  constructor: ({mongoDbUri, mongoDbOptions}) ->
     @datastore = new Datastore
-      database: mongojs mongoDbUri
+      database: mongojs mongoDbUri, null, mongoDbOptions
       collection: 'aliases'
 
   create: ({alias,name,uuid,owner}, callback) =>
